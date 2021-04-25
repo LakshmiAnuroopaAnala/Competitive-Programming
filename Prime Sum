@@ -1,0 +1,19 @@
+def Prime_seive(n):
+    seive=[1]*(n+1)
+    seive[0]=0
+    seive[1]=0
+    seive[2]=1
+    primes=[]
+    for i in range(2,n+1):
+        if seive[i]==1:
+            primes.append(i)
+            for j in range(i*i,n+1,i):
+                seive[j]=0
+    #print(primes)
+    for i in primes:
+        if abs(s-i) in primes:
+            print(i,s-i)
+            break
+
+s=int(input())
+Prime_seive(s)
