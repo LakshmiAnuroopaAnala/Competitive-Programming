@@ -1,0 +1,19 @@
+testCases=int(input())
+for testcase in range(0,testCases):
+    inputValue=int(input())
+    divisors=[]
+    if inputValue==1:
+        print("No")
+    else:
+        div=2
+        while (div*div<=inputValue):
+            if inputValue%div==0:
+                print(" ",div,inputValue//div)
+                divisors.append(div)
+                divisors.append(inputValue//div)
+            div=div+1
+        print(sum(divisors))    
+        if sum(divisors)+1==inputValue:
+            print("Yes")
+        else:
+            print("No")
