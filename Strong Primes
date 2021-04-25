@@ -1,0 +1,35 @@
+def Primes(n):
+    primes=[1]*(n+10)
+    primes[0]=0
+    primes[1]=0
+    primes[2]=1
+    prime_factors=[]
+    
+    for i in range(2,n+10):
+        if primes[i]==1:
+            prime_factors.append(i)
+            
+            for j in range(i*i,n+1,i):
+                primes[j]=0
+    count=0
+    #print(prime_factors)
+    for ind in range(start,end):
+        if ind in prime_factors:
+            val_index=prime_factors.index(ind)
+            break
+    #print("index", val_index)
+    while True:
+    #for prime in range(val_index,len(prime_factors)):
+        if 2*prime_factors[val_index]> prime_factors[val_index-1]+prime_factors[val_index+1]:
+            count=count+1
+        val_index=val_index+1    
+        if prime_factors[val_index]>=end:
+            break
+
+    return count        
+    #print(prime_factors)
+  
+testCases=int(input())
+for _ in range(0,testCases):
+    start,end=map(int,input().split())
+    print(Primes(end))
