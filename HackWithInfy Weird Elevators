@@ -1,0 +1,54 @@
+
+def PrimeFactor(n):
+    primeFactorSeive=[1]*(n+1)
+    primeFactorSeive[0]=0
+    primeFactorSeive[1]=0
+        
+    for i in range(2,n+1):
+        if primeFactorSeive[i]==1:
+            for j in range(i*i,n+1,i):
+                primeFactorSeive[j]=i
+    #print(primeFactorSeive)
+    return primeFactorSeive
+def countNumberOfFactors(num,primeFactorSeive):
+    count=0
+    #print(primeFactorSeive[num])
+    while True:        
+        if primeFactorSeive[num]==1 or primeFactorSeive[num]>m:
+            count=count+1
+            break
+        else:
+            #print(num)
+            num=num//primeFactorSeive[num]
+            count=count+1
+    return count         
+    
+
+def Gcd(x,y):
+    while True:
+        if x>y:
+            x=x%y            
+        else:
+            temp=x
+            x=y%x
+            y=temp
+        #print(x,y)
+        if x==0 or y==0 or x==y:
+            break
+        
+    if x==y:
+        return x
+    elif x==0:
+        return y
+    else:
+        return x    
+
+testCases=int(input())
+for _ in range(0,testCases):
+    x,y,m=map(int,input().split())    
+    commonFloor=Gcd(x,y)
+    x_lite=x//commonFloor
+    y_lite=y//commonFloor
+    #print(x_lite,y_lite)
+    primeFactorSeive=PrimeFactor(m*m)
+    print(countNumberOfFactors(x_lite,primeFactorSeive)+countNumberOfFactors(y_lite,primeFactorSeive),commonFloor)
