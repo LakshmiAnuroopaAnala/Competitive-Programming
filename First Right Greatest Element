@@ -1,0 +1,15 @@
+arr=list(map(int,input().split()))
+target=[0]*(len(arr))
+target[-1]=-1
+stack=[]
+stack.append(arr[-1])
+for i in range(len(arr)-2,-1,-1):
+    while len(stack)>0 and stack[-1]<=arr[i]:
+        stack.pop()
+    if len(stack)==0:
+        target[i]=-1
+    else:
+        target[i]=stack[-1]
+    stack.append(arr[i])
+print(stack," ",target)
+        
